@@ -36,11 +36,119 @@ class MainActivity : AppCompatActivity() {
         val  num = list.shuffled()
 
         // 3) ボタンにquizDataの0~3を表示させてみる
+        // 5) シャッフルされたnumの数字を入れる
         btn0.text = quizData[num[0]]
         btn1.text = quizData[num[1]]
         btn2.text = quizData[num[2]]
         btn3.text = quizData[num[3]]
 
+        // 6) btn0を押した時の正誤判定
+        btn0.setOnClickListener {
+            if (btn0.text == quizData[i]){
+                //正解
+                //tvQuestion.text = "正解！！"
+
+                // 7) カウントを1増やして無効化
+                i++
+                btn0.isEnabled = false
+                tvCount.text = i.toString() + "問正解"
+
+                // 9) i==4でGameClear
+                if (i == 4){
+                    tvQuestion.text = "全問正解！！GameClear！！"
+                }
+
+            }else{
+                //不正解＋ボタンの無効化
+                tvQuestion.text = "不正解！！GameOver"
+                btn0.isEnabled = false
+                btn1.isEnabled = false
+                btn2.isEnabled = false
+                btn3.isEnabled = false
+            }
+        }
+
+        // 8) btn1~3も同じようにする
+
+        btn1.setOnClickListener {
+            if (btn1.text == quizData[i]){
+                //正解
+                //tvQuestion.text = "正解！！"
+
+                // 7) カウントを1増やして無効化
+                i++
+                btn1.isEnabled = false
+                tvCount.text = i.toString() + "問正解"
+
+                // 9) i==4でGameClear
+                if (i == 4){
+                    tvQuestion.text = "全問正解！！GameClear！！"
+                }
+
+
+            }else{
+                //不正解＋ボタンの無効化
+                tvQuestion.text = "不正解！！GameOver"
+                btn0.isEnabled = false
+                btn1.isEnabled = false
+                btn2.isEnabled = false
+                btn3.isEnabled = false
+            }
+        }
+
+
+        btn2.setOnClickListener {
+            if (btn2.text == quizData[i]){
+                //正解
+                //tvQuestion.text = "正解！！"
+
+                // 7) カウントを1増やして無効化
+                i++
+                btn2.isEnabled = false
+                tvCount.text = i.toString() + "問正解"
+
+                // 9) i==4でGameClear
+                if (i == 4){
+                    tvQuestion.text = "全問正解！！GameClear！！"
+                }
+
+
+            }else{
+                //不正解＋ボタンの無効化
+                tvQuestion.text = "不正解！！GameOver"
+                btn0.isEnabled = false
+                btn1.isEnabled = false
+                btn2.isEnabled = false
+                btn3.isEnabled = false
+            }
+        }
+
+
+        btn3.setOnClickListener {
+            if (btn3.text == quizData[i]){
+                //正解
+                //tvQuestion.text = "正解！！"
+
+                // 7) カウントを1増やして無効化
+                i++
+                btn3.isEnabled = false
+                tvCount.text = i.toString() + "問正解"
+
+                // 9) i==4でGameClear
+                if (i == 4){
+                    tvQuestion.text = "全問正解！！GameClear！！"
+                }
+
+
+            }else{
+                //不正解＋ボタンの無効化
+                tvQuestion.text = "不正解！！GameOver"
+                btn0.isEnabled = false
+                btn1.isEnabled = false
+                btn2.isEnabled = false
+                btn3.isEnabled = false
+            }
+        }
 
     }
 }
