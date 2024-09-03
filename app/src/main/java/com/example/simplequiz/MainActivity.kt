@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    // 2)'配列を用意（クラスの各メソットで参照可
+    private val  quizData = arrayOf("A0","A1","A2","A3")
+    private var  i = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,10 +31,10 @@ class MainActivity : AppCompatActivity() {
         val btn1:Button = findViewById(R.id.btn1)
         val btn2:Button = findViewById(R.id.btn2)
         val btn3:Button = findViewById(R.id.btn3)
-        var  i = 0
+        //var  i = 0
 
         // 2) 配列を用意
-        val  quizData = arrayOf("A0","A1","A2","A3")
+        //val  quizData = arrayOf("A0","A1","A2","A3")
 
         // 4) 0~3までのリストを用意→シャッフル
         val  list = listOf(0,1,2,3)
@@ -46,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         btn0.setOnClickListener {
             if (btn0.text == quizData[i]){
                 //正解
-                //tvQuestion.text = "正解！！"
+                correctAns()
 
                 // 7) カウントを1増やして無効化
                 i++
@@ -60,11 +65,7 @@ class MainActivity : AppCompatActivity() {
 
             }else{
                 //不正解＋ボタンの無効化
-                tvQuestion.text = "不正解！！GameOver"
-                btn0.isEnabled = false
-                btn1.isEnabled = false
-                btn2.isEnabled = false
-                btn3.isEnabled = false
+                incorrectAns()
             }
         }
 
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         btn1.setOnClickListener {
             if (btn1.text == quizData[i]){
                 //正解
-                //tvQuestion.text = "正解！！"
+                correctAns()
 
                 // 7) カウントを1増やして無効化
                 i++
@@ -88,11 +89,7 @@ class MainActivity : AppCompatActivity() {
 
             }else{
                 //不正解＋ボタンの無効化
-                tvQuestion.text = "不正解！！GameOver"
-                btn0.isEnabled = false
-                btn1.isEnabled = false
-                btn2.isEnabled = false
-                btn3.isEnabled = false
+                incorrectAns()
             }
         }
 
@@ -100,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         btn2.setOnClickListener {
             if (btn2.text == quizData[i]){
                 //正解
-                //tvQuestion.text = "正解！！"
+                correctAns()
 
                 // 7) カウントを1増やして無効化
                 i++
@@ -115,11 +112,7 @@ class MainActivity : AppCompatActivity() {
 
             }else{
                 //不正解＋ボタンの無効化
-                tvQuestion.text = "不正解！！GameOver"
-                btn0.isEnabled = false
-                btn1.isEnabled = false
-                btn2.isEnabled = false
-                btn3.isEnabled = false
+                incorrectAns()
             }
         }
 
@@ -127,7 +120,7 @@ class MainActivity : AppCompatActivity() {
         btn3.setOnClickListener {
             if (btn3.text == quizData[i]){
                 //正解
-                //tvQuestion.text = "正解！！"
+                correctAns()
 
                 // 7) カウントを1増やして無効化
                 i++
@@ -142,13 +135,32 @@ class MainActivity : AppCompatActivity() {
 
             }else{
                 //不正解＋ボタンの無効化
-                tvQuestion.text = "不正解！！GameOver"
-                btn0.isEnabled = false
-                btn1.isEnabled = false
-                btn2.isEnabled = false
-                btn3.isEnabled = false
+                incorrectAns()
             }
         }
+    }
+    // 11) 正解の関数（アラートダイアログを表示）
+    private fun correctAns(){
+        AlertDialog.Builder(this)
+            .setTitle("正解！")
+            .setMessage(quizData[i])
+            .setPositiveButton("OK",null)
+            .show()
+    }
+
+    // 10) 不正解処理の関数
+    private fun incorrectAns(){
+        val tvQuestion:TextView = findViewById(R.id.tvQuestion)
+        val btn0:Button = findViewById(R.id.btn0)
+        val btn1:Button = findViewById(R.id.btn1)
+        val btn2:Button = findViewById(R.id.btn2)
+        val btn3:Button = findViewById(R.id.btn3)
+        //不正解＋ボタンの無効化
+        tvQuestion.text = "不正解！！GameOver"
+        btn0.isEnabled = false
+        btn1.isEnabled = false
+        btn2.isEnabled = false
+        btn3.isEnabled = false
 
     }
 }
